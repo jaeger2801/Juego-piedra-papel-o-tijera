@@ -59,7 +59,7 @@ async function updateMoves() {
             'Content-Type': 'application/json',
         }
     }
-    const request = await fetch(`http://${IPaddress}:${PORT}/moves`, putRequest);
+    const request = await fetch('http://localhost:5500/moves', putRequest);
     const data = await request.json();
     console.log('data: ' + data);
     players = data;

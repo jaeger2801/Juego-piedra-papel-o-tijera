@@ -27,21 +27,14 @@ let players = [{
 }, {
     name: 'Cris',
     move: 'Paper'
-}]; // {name: ‘’, move: ‘’}
+}]; 
 
-//---------------------------- Endpoints
-/*
-GET /player
-GET /display
-GET /moves
-POST /player
-PUT /make-a-move
-*/
-
+//permite registrar lo movimientos en el jugador
 serverApp.get('/moves', (request, response) => {
     response.send(players);
 });
 
+//permite añadir nuevos personajes al juego
 serverApp.post('/player', (request, response) => {
 
     addPlayer(request.body) ? response.send({
@@ -52,6 +45,7 @@ serverApp.post('/player', (request, response) => {
     console.log(players);
 });
 
+//regitra lo movimientos que se realizan
 serverApp.put('/make-a-move', (request, response) => {
 
     upDatePlayerMove(request.body) ? response.send({
@@ -87,6 +81,7 @@ const findPlayer = wantedPlayer => {
     return players.find(player => player.name == wantedPlayer.name);
 };
 
+//actualización constante del movimiento que realiza el jugador
 const upDatePlayerMove = targetPlayer => {
     if (doesPlayerExists(targetPlayer)) {
         let playerFound = findPlayer(targetPlayer);
